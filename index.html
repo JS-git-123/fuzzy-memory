@@ -103,6 +103,29 @@
             color: gray;
             margin-top: 5px;
         }
+        .share-buttons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .contact-form input[type="text"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #E1BE97;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #d4a475;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +141,7 @@
                 <div class="nav-item" onclick="scrollToSection('notes')">笔记</div>
                 <div class="nav-item" onclick="scrollToSection('knowledgebase')">知识库</div>
                 <div class="nav-item" onclick="scrollToSection('ai')">智能体</div>
+                <div class="nav-item" onclick="scrollToSection('contact')">联系我们</div>
             </div>
         </div>
         <div class="right-column">
@@ -137,6 +161,10 @@
                         <h3>向全球征税</h3>
                         <p class="blog-description">李光耀提到一个很有意思的点，他说美国的债务问题可能得要总统步入第二个任期，不必担心连任问题时才会解决（因为美国选举的弊端导致他们更关注短期的政治得分），这也可以部分解释第二任期上来的Trump为何超预期的向全球加征关税。 ​​​</p>
                         <p class="blog-date" id="date-global-tax"></p>
+                        <div class="share-buttons">
+                            <a href="#" onclick="shareOnFacebook('https://example.com/blog/global-tax')">分享到 Facebook</a>
+                            <a href="#" onclick="shareOnTwitter('https://example.com/blog/global-tax', '向全球征税')">分享到 Twitter</a>
+                        </div>
                     </div>
                 </div>
                 <div class="blog-item">
@@ -144,16 +172,24 @@
                         <h3>核心是智能化</h3>
                         <p class="blog-description">诺基亚可以待机1-2周不用充电，现在的手机基本上都是一天一充，但没有人再去用诺基亚了，核心点是智能。新能源汽车也一样 ​​​ ​​​</p>
                         <p class="blog-date" id="date-intelligent-tech"></p>
+                        <div class="share-buttons">
+                            <a href="#" onclick="shareOnFacebook('https://example.com/blog/intelligent-tech')">分享到 Facebook</a>
+                            <a href="#" onclick="shareOnTwitter('https://example.com/blog/intelligent-tech', '核心是智能化')">分享到 Twitter</a>
+                        </div>
                     </div>
                     <img src="images/intelligent-tech.jpg" alt="智能化" class="blog-image">
                 </div>
-                 <div class="blog-item">
+                <div class="blog-item">
                     <div class="blog-content">
                         <h3>价值观改变性格改变习惯</h3>
                         <p class="blog-description">那些“成功学”最爱讲述的什么习惯改变性格，性格改变命运，纯粹是胡扯。在我看到的可以重塑自己性格的人中，首先发生改变的是价值观，然后再是性格的改变，最后才是习惯改变，而且只要价值观发生改变，性格和习惯的改变顺其自然。——李想
 
 好像很有道理，所以要经常被颠覆，哈哈嗝嗝 ​​​ ​​​</p>
                         <p class="blog-date" id="date-value-change"></p>
+                        <div class="share-buttons">
+                            <a href="#" onclick="shareOnFacebook('https://example.com/blog/value-change')">分享到 Facebook</a>
+                            <a href="#" onclick="shareOnTwitter('https://example.com/blog/value-change', '价值观改变性格改变习惯')">分享到 Twitter</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -187,6 +223,15 @@
             <section id="ai" class="ai-section">
                 <h2>智能体</h2>
                 <p>介绍一些关于AI的研究和发展。</p>
+            </section>
+            <section id="contact" class="contact-section">
+                <h2>联系我们</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="您的邮箱" required>
+                    <textarea placeholder="您的消息" rows="5" required></textarea>
+                    <button type="submit">发送</button>
+                </form>
             </section>
         </div>
     </div>
@@ -223,6 +268,23 @@
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
+
+        function shareOnFacebook(url) {
+            window.open(`https://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareOnTwitter(url, title) {
+            window.open(`https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+        }
+
+        document.querySelector('.contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('感谢您的留言！');
+            this.reset();
+        });
     </script>
 </body>
 </html>
+
+
+
