@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 90vw;
+            max-width: 1200px;
+            margin-top: 2.5vh;
+            display: flex;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-image: url('https://img.alicdn.com/imgextra/i1/O1CN01n5bYVC1LISOAf9gSM_!!6000000001276-2-tps-1232-928.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .left-column {
+            width: 15%;
+            background-color: white;
+            border-right: 3px solid #E1BE97;
+            border-left: 3px solid #E1BE97;
+            padding: 20px;
+        }
+        .right-column {
+            width: 85%;
+            background-color: white;
+            padding: 20px;
+        }
+        .blog-title {
+            font-size: 2vh;
+            color: #664401;
+            padding-left: 20%;
+            padding-top: 15%;
+            text-align: center;
+        }
+        .nav-item {
+            font-size: 2vh;
+            color: #333;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            color: #E1BE97;
+            font-weight: bold;
+        }
+        .notes-section h2,
+        .blogs-section h2 {
+            font-size: 2.5vh;
+            color: black;
+            margin-bottom: 20px;
+        }
+        .note-card {
+            background-color: #F9F4E9;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 40px;
+            display: inline-block;
+            transition: border 0.3s ease;
+        }
+        .note-card:hover {
+            border: 1px solid #E1BE97;
+        }
+        .note-card p {
+            margin: 5px 0;
+        }
+        .note-date {
+            font-size: 1vh;
+            color: gray;
+        }
+        .blog-item {
+            margin-bottom: 40px;
+        }
+        .blog-image {
+            width: 500px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .blog-content {
+            margin-top: 10px;
+        }
+        .blog-title h3 {
+            font-size: 2.5vh;
+            margin: 0;
+        }
+        .blog-description {
+            font-size: 1.5vh;
+            color: gray;
+        }
+        .blog-date {
+            font-size: 1.2vh;
+            color: gray;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="blog-title">
+                <h1>个人博客</h1>
+            </div>
+            <div class="navigation">
+                <div class="nav-item" onclick="scrollToSection('home')">主页</div>
+                <div class="nav-item" onclick="scrollToSection('about')">关于我</div>
+                <div class="nav-item" onclick="scrollToSection('blogs')">博客</div>
+                <div class="nav-item" onclick="scrollToSection('notes')">笔记</div>
+                <div class="nav-item" onclick="scrollToSection('knowledgebase')">知识库</div>
+                <div class="nav-item" onclick="scrollToSection('ai')">智能体</div>
+            </div>
+        </div>
+        <div class="right-column">
+            <section id="home" class="home-section">
+                <h2>欢迎来到我的博客</h2>
+                <p>这是一个关于健康生活、和个人成长的博客。</p>
+            </section>
+            <section id="about" class="about-section">
+                <h2>关于我</h2>
+                <p>我是Jason，今年21岁，我是一名热爱生活的阳光大男孩，喜欢分享自己的经验和见解。</p>
+            </section>
+            <section id="blogs" class="blogs-section">
+                <h2>最近博客</h2>
+                <div class="blog-item">
+                    <img src="https://img.alicdn.com/imgextra/i2/O1CN01VjWLAB21Zb4eAatD8_!!6000000006999-2-tps-928-1232.png" alt="活力的源泉" class="blog-image">
+                    <div class="blog-content">
+                        <h3>向全球征税</h3>
+                        <p class="blog-description">李光耀提到一个很有意思的点，他说美国的债务问题可能得要总统步入第二个任期，不必担心连任问题时才会解决（因为美国选举的弊端导致他们更关注短期的政治得分），这也可以部分解释第二任期上来的Trump为何超预期的向全球加征关税。 ​​​</p>
+                        <p class="blog-date" id="date-global-tax"></p>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="blog-content">
+                        <h3>核心是智能化</h3>
+                        <p class="blog-description">诺基亚可以待机1-2周不用充电，现在的手机基本上都是一天一充，但没有人再去用诺基亚了，核心点是智能。新能源汽车也一样 ​​​ ​​​</p>
+                        <p class="blog-date" id="date-intelligent-tech"></p>
+                    </div>
+                    <img src="images/intelligent-tech.jpg" alt="智能化" class="blog-image">
+                </div>
+                 <div class="blog-item">
+                    <div class="blog-content">
+                        <h3>价值观改变性格改变习惯</h3>
+                        <p class="blog-description">那些“成功学”最爱讲述的什么习惯改变性格，性格改变命运，纯粹是胡扯。在我看到的可以重塑自己性格的人中，首先发生改变的是价值观，然后再是性格的改变，最后才是习惯改变，而且只要价值观发生改变，性格和习惯的改变顺其自然。——李想
+
+好像很有道理，所以要经常被颠覆，哈哈嗝嗝 ​​​ ​​​</p>
+                        <p class="blog-date" id="date-value-change"></p>
+                    </div>
+                </div>
+            </section>
+            <section id="notes" class="notes-section">
+                <h2>我的笔记</h2>
+                <div class="note-card">
+                    <p>生活中的无形画布</p>
+                    <p class="note-date">日期：2024.10.5</p>
+                </div>
+                <div class="note-card">
+                    <p>塑造AI的魔法</p>
+                    <p class="note-date">日期：2024.10.10</p>
+                </div>
+                <div class="note-card">
+                    <p>园艺中生命哲学的呼吸感</p>
+                    <p class="note-date">日期：2024.10.15</p>
+                </div>
+                <div class="note-card">
+                    <p>编程的艺术</p>
+                    <p class="note-date">日期：2024.10.20</p>
+                </div>
+                <div class="note-card">
+                    <p>旅行的意义</p>
+                    <p class="note-date">日期：2024.10.25</p>
+                </div>
+            </section>
+            <section id="knowledgebase" class="knowledgebase-section">
+                <h2>知识库</h2>
+                <p>这里存放了一些技术文章和参考资料。</p>
+            </section>
+            <section id="ai" class="ai-section">
+                <h2>智能体</h2>
+                <p>介绍一些关于AI的研究和发展。</p>
+            </section>
+        </div>
+    </div>
+    <script>
+        // 定义一个函数来获取当前时间并格式化
+        function getCurrentDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}年${month}月${day}日`;
+        }
+
+        // 定义一个函数来设置所有博客项的发布时间
+        function setBlogDates() {
+            const dates = [
+                { id: 'date-global-tax', date: getCurrentDate() },
+                { id: 'date-intelligent-tech', date: getCurrentDate() },
+                { id: 'date-value-change', date: getCurrentDate() }
+                // 添加更多博客项的时间ID和日期
+            ];
+
+            dates.forEach(entry => {
+                const element = document.getElementById(entry.id);
+                if (element) {
+                    element.textContent = `发布日期：${entry.date}`;
+                }
+            });
+        }
+
+        // 页面加载完成后执行设置发布时间的函数
+        window.onload = setBlogDates;
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
